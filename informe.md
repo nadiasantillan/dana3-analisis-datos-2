@@ -7,5 +7,5 @@
         ALIMENTOS {
             string clave
         }
-        USUARIOS |..|{ ALIMENTOS: Alimentos consumidos por una persona el dia anterior}
+        USUARIOS}|..|{ALIMENTOS: Alimentos consumidos por una persona el dia anterior
 ```
