@@ -1,0 +1,1 @@
+REGIONES = ["Centro", "GBA", "NEA", "NOA", "Cuyo", "Patagonia"]

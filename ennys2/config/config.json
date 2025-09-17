@@ -1,0 +1,61 @@
+{
+    "salida": {
+        "directorio": "../out"
+    },
+    "encuesta": {
+        "variables": [
+            "MHDR_KEY",
+            "E_CUEST",
+            "region",
+            "fecha_entr",
+            "antropo_fnac",
+            "antropo_sex",
+            "PESO",
+            "TALLA",
+            "IMC",
+            "ZPE",
+            "ZTE",
+            "PTZ",
+            "Cobertura_salud",
+            "Alerta_PTZ",
+            "Alerta_IMC",
+            "miembro_id",
+            "IngHog_UC_QUINT_imp",
+            "T_C4_FCA_6_1_14"
+        ],
+        "variables_fecha": [
+            "fecha_entr",
+            "antropo_fnac"
+        ]
+    },
+    "alimentos": {
+        "variables": [
+            "clave",
+            "fecha_realizacion",
+            "nro_R24H",
+            "miembro_id"
+        ],
+        "variables_fecha": [
+            "fecha_realizacion"
+        ],
+        "archivo_variables": {
+            "archivo_nombre": "./config/alimentos.csv",
+            "variable_condicion": "Categoría",
+            "variable_variable": "Código",
+            "variables": ["Código", "Alimento", "Categoría"],
+            "categoria_bebidas": "Bebidas azucaradas"
+        }
+    },
+    "nutrientes": {
+        "variables": [
+            "clave",
+            "fecha_realizacion",
+            "nro_R24H",
+            "miembro_id",
+            "tot_energia_kcal"
+        ],
+        "variables_fecha": [
+            "fecha_realizacion"
+        ]
+    }
+}
