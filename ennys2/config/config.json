@@ -11,8 +11,11 @@
             "antropo_fnac",
             "antropo_sex",
             "PESO",
+            "PESO2",
             "TALLA",
+            "TALLA2",
             "IMC",
+            "IMC2",
             "ZPE",
             "ZTE",
             "PTZ",
@@ -57,5 +60,8 @@
         "variables_fecha": [
             "fecha_realizacion"
         ]
+    },
+    "ennys1": {
+        "prevalencia_sobrepeso_mujeres": "./data/2005_prevalencia_sobrepeso_mujeres.csv"
     }
 }

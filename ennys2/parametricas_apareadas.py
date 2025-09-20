@@ -1,4 +1,4 @@
-from pandas import DataFrame
+from pandas import DataFrame, read_csv
 # import logging
 from normalidad import AnalisisNormalidad
 from prettytable import PrettyTable    
@@ -9,26 +9,8 @@ class IMCMujeresAdultas:
         self.configuracion = configuracion
         self.variable = "IMC"
         self.df = df[(df["años_cumplidos"]>=20)&(df["antropo_sex"]=="mujer")&(df[self.variable].notna())]
-        self.prevalencias2005 = DataFrame(data = [
-            ["Centro", "20 a 30 años", 0.344],
-            ["Centro", "30 a 40 años", 0.452],
-            ["Centro", "40 a 50 años", 0.643],
-            ["GBA", "20 a 30 años", 0.324],  
-            ["GBA", "30 a 40 años", 0.459],
-            ["GBA", "40 a 50 años", 0.58],
-            ["Cuyo", "20 a 30 años", 0.302],
-            ["Cuyo", "30 a 40 años", 0.357],
-            ["Cuyo", "40 a 50 años",  0.615],
-            ["NEA", "20 a 30 años", 0.228],
-            ["NEA", "30 a 40 años", 0.430],
-            ["NEA", "40 a 50 años", 0.701],
-            ["NOA", "20 a 30 años", 0.375],
-            ["NOA", "30 a 40 años", 0.509],
-            ["NOA", "40 a 50 años", 0.632],
-            ["Patagonia", "20 a 30 años", 0.375],
-            ["Patagonia", "30 a 40 años", 0.509],
-            ["Patagonia", "40 a 50 años",  0.632]], columns=("Región", "Rango Etario", "Prevalencia"))
-
+        config_dict = self.configuracion.as_dict()
+        self.prevalencias2005 = read_csv(config_dict["ennys1"]["prevalencia_sobrepeso_mujeres"])
         
     def analisis(self):
         tabla = PrettyTable()
@@ -57,15 +39,15 @@ class IMCMujeresAdultas:
                 data.append((2018, region, f"{edad_desde} a {edad_hasta} años", prevalencia))
             tabla.add_row(fila_region)
         print(tabla)
-        df = DataFrame(data, columns=("Encuesta", "Región", "Rango Etario", "Prevalencia"))
+        df = DataFrame(data, columns=("Encuesta", "Región", "Rango etario", "Prevalencia"))
         directorio = self.configuracion.as_dict()["salida"]["directorio"]
         df.to_csv(f"{directorio}/sobrepeso_2018.csv", index=False)
         plt.clf()
         fig, (ax11, ax21) = plt.subplots(1, 2, figsize=(10, 6))
-        barplot(self.prevalencias2005, x="Región", hue="Rango Etario", y="Prevalencia", ax=ax11)
+        barplot(self.prevalencias2005, x="Región", hue="Rango etario", y="Prevalencia", ax=ax11)
         ax11.set_ylim([0, 0.9])
         ax11.set_title("2005")
-        barplot(df, x="Región", hue="Rango Etario", y="Prevalencia", ax=ax21)
+        barplot(df, x="Región", hue="Rango etario", y="Prevalencia", ax=ax21)
         ax21.set_ylim([0, 0.9])
         ax21.set_title("2018")
         fig.suptitle("Comparación Prevalencia de Sobrepeso en Mujeres entre 20 y 49 años")

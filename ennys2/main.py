@@ -5,6 +5,7 @@ import sys
 from analisis_up import AlimentosUltraprocesados
 from calorias import ConsumoCaloriasNiños2a5
 from herramientas.configuracion import Configuracion
+from imc import IMC
 
 def configuracion():
     
@@ -26,18 +27,21 @@ def analisis():
                     configuracion)
     
     encuesta = tablas.tabla_encuesta()
-    alimentos = tablas.tabla_alimentos()
-    nutrientes = tablas.tabla_nutrientes()
+    # alimentos = tablas.tabla_alimentos()
+    # nutrientes = tablas.tabla_nutrientes()
     
-    up = AlimentosUltraprocesados(configuracion)
-    up.analisis(alimentos)
+    # up = AlimentosUltraprocesados(configuracion)
+    # up.analisis(alimentos)
     
-    ma = IMCMujeresAdultas(configuracion, encuesta)
-    ma.analisis()
+    # ma = IMCMujeresAdultas(configuracion, encuesta)
+    # ma.analisis()
     
-    c = ConsumoCaloriasNiños2a5(nutrientes, configuracion)
-    c.analisis()
-    c.graficos()
+    # c = ConsumoCaloriasNiños2a5(nutrientes, configuracion)
+    # c.analisis()
+    # c.graficos()
+    imc = IMC(encuesta)   
+    imc.analisis() 
+    imc.graficos()
     
 if __name__ == "__main__":
     configuracion()

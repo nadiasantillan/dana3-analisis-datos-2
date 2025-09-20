@@ -208,4 +208,5 @@ __marimo__/
 
 
 ennys2/data
+!./ennys2/data/2005_prevalencia_sobrepeso_mujeres.csv
 out
